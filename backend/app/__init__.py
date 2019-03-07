@@ -9,7 +9,7 @@ import os
 def initialize_landing_page_api_blueprint(app):
     from app.landing_page import bp as landing_page_bp
     app.register_blueprint(landing_page_bp)
-
+ 
 def initialize_user_dashboard_api_blueprint(app):
     from app.user_dashboard import bp as user_dashboard_bp
     app.register_blueprint(user_dashboard_bp, url_prefix='/user')
@@ -39,11 +39,14 @@ def create_app():
         create_tables()
 
     CORS(app) # enable Cross-Origin Resource Sharing
-
+    
+    app.config['UPLOAD_FOLDER'] = os.path.join(app.instance_path, 'storage')
+    app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 
     initialize_user_dashboard_api_blueprint(app)
     initialize_auth_api_blueprint(app)
     initialize_admin_api_blueprint(app)
+    initialize_landing_page_api_blueprint(app)
     
     return app
 

@@ -1,0 +1,28 @@
+<html>  
+  <head>
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+  </head>
+  <body>
+    <h1>Upload your CV!</h1>
+
+    <h3>{{name}}</h3>
+    <h3>{{username}}</h3>
+
+    {% if has_uploaded == true %}
+        <h3>you have uploaded a file!</h3>
+        <form method=post>
+            <input type="submit" name=submit value="Check">
+            <input type="submit" name=submit value="Delete">
+        </form>
+    {% else %}
+        <h3>you have no uploads!</h3>
+        <form method=post enctype=multipart/form-data>
+        <p><input type=file name=file>
+            <input type=submit name=submit value="Upload">
+        </form>
+    {% endif %}
+
+    <script src="/static/scripts.js" charset="utf-8"></script>
+  </body>
+</html>  

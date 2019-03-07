@@ -5,24 +5,17 @@ import uuid
 
 
 class User(ModelMixin, db.Model):
-    __tablename__ = 'contact'
+    __tablename__ = 'user'
     
     name = db.Column(db.String(100))
-    email = db.Column(db.String(100))
+    istid = db.Column(db.String(10), unique=True)
 
-    password = db.Column(db.String(100))
+    acceptedTerms = db.Column(db.Boolean, default=False)
 
-    course = db.Column(db.String(100))
-
-    remember_token = db.Column(db.String(100))
-
-    istid = db.Column(db.String(10))
     
     def __init__(self, name, istid, email, course):
         self.name = name
         self.istid = istid
-        self.email = email
-        self.course = course
 
     def __repr__(self):
         return '<email:: {}  |  Name: {}>'.format(self.email, self.name)

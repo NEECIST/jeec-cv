@@ -18,10 +18,7 @@ class Config(object):
     SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL'] + os.environ['APP_DB'] + "?client_encoding=utf8"
     SQLALCHEMY_TRACK_MODIFICATIONS = True
 
-    UPLOAD_FOLDER = os.environ.get('UPLOAD_FOLDER')
-
-    ALLOWED_EXTENSIONS = set(['pdf'])
-
+    ALLOWED_EXTENSIONS = ['pdf']
 
 
 
