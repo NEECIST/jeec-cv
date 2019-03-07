@@ -6,6 +6,10 @@ from app.auth.services.create_tecnico_client_service import CreateTecnicoClientS
 class TecnicoClientHandler(object):
 
     @staticmethod
+    def create_client(fenix_config_file):
+        return CreateTecnicoClientService(fenix_config_file=fenix_config_file).call()
+
+    @staticmethod
     def get_authentication_url(client):
         url = client.get_authentication_url()
         return url
