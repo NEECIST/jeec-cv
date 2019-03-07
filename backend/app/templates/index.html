@@ -1,15 +1,32 @@
 <html>  
   <head>
     <title>JEEC CV</title>
-    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/index_style.css">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,maximum-scale=1">
+    
+    <link rel="shortcut icon" type="image/x-icon" href="./static/j_logo.png">
+
+    <link href="https://fonts.googleapis.com/css?family=Karla|Lato|Roboto|Raleway|Source+Sans+Pro" rel="stylesheet">
+    
   </head>
   <body>
-    <h1>JEEC CV Submission Platform</h1>
+    <div class="logo-container">
+      <img class="jeec-logo" src="/static/jeec_logo.svg">
+    </div>
 
-    <h3>Student login</h3>
-    <form action="/index" method=post>
-        <input type="submit" name=submit value="Student">
-    </form>
+    <div class="section-header" >
+      <h2>2019 CV Platform</h2>
+      <p>submit your resume for our partners</p>
+    </div>
+
+    <div class="login-container">
+        <span class="login-text">Login:</span>
+        <form action="/index" method=post>
+          <input type="submit" name=submit value="Fenix Authentication" class="login-button">
+        </form>
+    </div>
     
     <script src="/static/scripts.js" charset="utf-8"></script>
   </body>

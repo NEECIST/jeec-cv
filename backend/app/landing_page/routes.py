@@ -13,12 +13,9 @@ def index():
 @bp.route('/')
 @bp.route('/index', methods=['POST'])
 def choose_role():
-    if request.form['submit'] == 'Student':
+    if request.form['submit'] == 'Fenix Authentication':
         return redirect(url_for('auth.login'))
     
-    # elif request.form['submit'] == 'Company':
-    #     return redirect(url_for('user_dashboard.delete_file'))
-
     return redirect(url_for('/'))
 
 
