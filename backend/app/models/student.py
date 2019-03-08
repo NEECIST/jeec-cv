@@ -4,8 +4,8 @@ import sqlalchemy
 import uuid
 
 
-class User(ModelMixin, db.Model):
-    __tablename__ = 'user'
+class Student(ModelMixin, db.Model):
+    __tablename__ = 'student'
     
     name = db.Column(db.String(100))
     istid = db.Column(db.String(10), unique=True)
@@ -13,7 +13,7 @@ class User(ModelMixin, db.Model):
     acceptedTerms = db.Column(db.Boolean, default=False)
 
     
-    def __init__(self, name, istid, email, course):
+    def __init__(self, name, istid):
         self.name = name
         self.istid = istid
 

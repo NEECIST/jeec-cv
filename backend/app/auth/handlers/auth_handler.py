@@ -1,23 +1,25 @@
 from flask import session
 from app import logger
-from app.auth.services.create_user_service import CreateUserService
-from app.auth.finders.user_finder import UserFinder
+from app.auth.services.create_student_service import CreateStudentService
+from app.auth.finders.student_finder import StudentFinder
 
 class AuthHandler(object):
 
     @staticmethod
     def check_for_user():
-        user = UserFinder.get_from_istid(session['username'])
+        student = StudentFinder.get_from_istid(session['username'])
 
-        if user is None:
+        if student is None:
+            logger.info("New user acessing the platform.")
             try:
-                CreateUserService(username=session['username']).call()
+                CreateStudentService(istid=session['username'], name=session['name']).call()
+                logger.info("New student added to the DB")
                 session['first_time_login'] = True
                 return False
             except Exception as e:
                 logger.error(e)
         else:
-            if user.acceptedTerms == False:
+            if student.acceptedTerms == False: #if the user never authenticated show terms
                 session['first_time_login'] = True
             else:
                 session['first_time_login'] = False

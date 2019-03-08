@@ -1,28 +1,65 @@
 <html>  
   <head>
     <title>User Dashboard</title>
-    <link rel="stylesheet" href="/static/style.css">
-  </head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,maximum-scale=1">
+    <link rel="stylesheet" href="/static/css//user_dashboard_style.css">
+</head>
   <body>
-    <h1>Upload your CV!</h1>
+    <div class="section-header">
+        <h2>{{name}}</h2>
+        <p>{{ username }}</p>
+    </div>
 
-    <h3>{{name}}</h3>
-    <h3>{{username}}</h3>
+    <div class="resume-container">
+        <img class="resume-logo" src="/static/resume.svg">
+    </div>
 
-    {% if has_uploaded == true %}
-        <h3>you have uploaded a file!</h3>
-        <form method=post>
-            <input type="submit" name=submit value="Check">
-            <input type="submit" name=submit value="Delete">
+    <div class="dashboard-card">
+        {% if first_time_login == true %}
+            <div class="terms-conditions-card">
+                <div class="text-container">
+                    
+                </div>
+
+                <form method=post>
+                    <input type="submit" name=submit value="Accept Terms">
+                </form>
+            </div>
+        {% endif %}
+
+        {% if has_uploaded == true %}
+            <h3 class="upload-msg">Your CV has been uploaded!</h3>
+            <form method=post class="submited-file-form">
+                <div class="check-container">
+                    <input type="submit" name=submit value="Check" id="check" class="check-button">
+                    <label for="check"><img class="check-logo" src="/static/check.svg">Check CV</label>
+                </div>
+                
+                <div class="delete-container">
+                    <input type="submit" name=submit value="Delete" id="delete" class="delete-button">
+                    <label for="delete"><img class="delete-logo" src="/static/delete.svg">Delete CV</label>
+                </div>
+            </form>
+        {% else %}
+            <h3 class="upload-msg">Upload your CV!</h3>
+            <form method=post enctype=multipart/form-data>
+                <div class="inputfile-container">
+                    <input type=file accept=".pdf" name=file id="file" class="inputfile">
+                    <label for="file" id="file-label">Choose a file</label>
+                </div>
+
+                <div class="upload-container">
+                    <input type=submit name=submit value="Upload" id="submit" class="upload-button">
+                    <label for="submit"><img class="upload-logo" src="/static/upload.svg">Upload</label>
+                </div>
+            </form>
+        {% endif %}
+    </div>
+
+    <div class="logout-container">
+        <form action="/auth/logout" method=get>
+            <input type="submit" name=submit value="Logout" class="logout-button">
         </form>
-    {% else %}
-        <h3>you have no uploads!</h3>
-        <form method=post enctype=multipart/form-data>
-        <p><input type=file name=file>
-            <input type=submit name=submit value="Upload">
-        </form>
-    {% endif %}
-
-    <script src="/static/scripts.js" charset="utf-8"></script>
+    </div>
   </body>
 </html>  

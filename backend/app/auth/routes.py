@@ -29,6 +29,7 @@ def redirect_uri():
     
         session['name'] = person['name']
         session['username'] = person['username']
+        session['first_time_login'] = False
 
         if AuthHandler.check_for_user() is False:
             logger.info("New user created.")
@@ -41,12 +42,9 @@ def redirect_uri():
         return redirect(url_for('/'))
     
 
-@bp.route('/logout')
+@bp.route('/logout', methods=['GET'])
 def logout():
-   session.pop('fenix_auth_code', None)
-   return redirect('/')
-
-    # user = ClientHandler.get_user(code=code)
-    # person = ClientHandler.get_person(user=user)
-
-    # return person['name']
+    session.pop('fenix_auth_code', None)
+    session.pop('name', None)
+    session.pop('username', None)
+    return redirect(url_for('landing_page.index'))

@@ -1,5 +1,5 @@
 from app import logger
-from flask import jsonify, render_template, request, session, redirect, url_for, send_from_directory, current_app
+from flask import flash, jsonify, render_template, request, session, redirect, url_for, send_from_directory, current_app
 from . import bp
 from app.auth.wrappers import require_api_token
 import os
@@ -14,15 +14,19 @@ from .handlers.file_handler import FileHandler
 @bp.route('/dashboard', methods=['GET'])
 @require_api_token
 def dashboard():
-    filename = 'cv-' + session['username'] + '.pdf'
+    if session['first_time_login'] == True:
+        return render_template('terms_conditions.html')
 
-    if os.path.isfile(os.path.join(current_app.root_path, 'storage', filename)): 
-        has_uploaded = True
     else:
-        has_uploaded = False
+        filename = 'cv-' + session['username'] + '.pdf'
 
-    return render_template('user_dashboard.html', name=session['name'], username=session['username'], has_uploaded=has_uploaded)
-    
+        if os.path.isfile(os.path.join(current_app.root_path, 'storage', filename)): 
+            has_uploaded = True
+        else:
+            has_uploaded = False
+
+        return render_template('user_dashboard.html', name=session['name'], username=session['username'], has_uploaded=has_uploaded, first_time_login=session['first_time_login'])
+        
 # content routes
 @bp.route('/dashboard', methods=['POST'])
 @require_api_token
@@ -49,9 +53,23 @@ def dashboard_actions():
 
             FileHandler.upload_file(file, filename)
             logger.info('File uploaded sucessfuly!')
+        
+        elif not allowed_file(file.filename):
+            logger.warning('Wrong file extension')
+            flash('Upload .pdf')
+            return redirect(request.url)
             
         return redirect(url_for('user_dashboard.dashboard'))
-
+    
+    elif request.form['submit'] == 'Accept Terms':
+        from app.models.student import Student
+        student = Student.query.filter_by(istid=session['username']).first()
+        student.update(acceptedTerms=True)
+        session['first_time_login'] = False
+        student.reload()
+        return redirect(request.url)
+    
+    return redirect(url_for('user_dashboard.dashboard'))
 
 @bp.route('/delete', methods=['GET'])
 @require_api_token
@@ -69,4 +87,3 @@ def uploaded_file():
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in Config.ALLOWED_EXTENSIONS
-
