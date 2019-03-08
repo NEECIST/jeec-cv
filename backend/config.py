@@ -29,8 +29,10 @@ class DevelopmentConfig(Config):
     DEBUG = True
     TESTING = True
 
-    SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL'] + os.environ['APP_DB']
+    SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL'] + os.environ['APP_DB'] + "?client_encoding=utf8"
     SQLALCHEMY_TRACK_MODIFICATIONS = True
+
+    ALLOWED_EXTENSIONS = ['pdf']
     
 
 class TestingConfig(Config):
@@ -51,8 +53,15 @@ class StagingConfig(Config):
 
 class ProductionConfig(Config):
     """Production configuration"""
+    SECRET_KEY = os.environ.get('SECRET_KEY')
     DEBUG = False
     SESSION_COOKIE_SECURE = True
+
+    SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL'] + os.environ['APP_DB'] + "?client_encoding=utf8"
+    SQLALCHEMY_TRACK_MODIFICATIONS = True
+
+    ALLOWED_EXTENSIONS = ['pdf']
+
 
 config = {
     'development': DevelopmentConfig,

@@ -7,7 +7,7 @@ db.UUID = UUID(as_uuid=True)
 
 def create_tables():
     from app.models.company import Company
-    from app.models.user import User
+    from app.models.student import Student
     db.create_all()
 
 
