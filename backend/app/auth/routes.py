@@ -47,4 +47,4 @@ def logout():
     session.pop('fenix_auth_code', None)
     session.pop('name', None)
     session.pop('username', None)
-    return redirect(url_for('landing_page.index'))
+    return redirect("cv.jeec.ist")

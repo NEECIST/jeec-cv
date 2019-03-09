@@ -11,6 +11,7 @@
 /backend/node_modules/
 /backend/__pycache__
 /backend/venv/
+/backend/fenixedu.ini
 
 #frontend
 .DS_Store
