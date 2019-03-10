@@ -15,18 +15,6 @@
     </div>
 
     <div class="dashboard-card">
-        {% if first_time_login == true %}
-            <div class="terms-conditions-card">
-                <div class="text-container">
-                    
-                </div>
-
-                <form method=post>
-                    <input type="submit" name=submit value="Accept Terms">
-                </form>
-            </div>
-        {% endif %}
-
         {% if has_uploaded == true %}
             <h3 class="upload-msg">Your CV has been uploaded!</h3>
             <form method=post class="submited-file-form">
@@ -42,6 +30,7 @@
             </form>
         {% else %}
             <h3 class="upload-msg">Upload your CV!</h3>
+            <div>Maximum file size: 8 Mb</div>
             <form method=post enctype=multipart/form-data>
                 <div class="inputfile-container">
                     <input type=file accept=".pdf" name=file id="file" class="inputfile">
