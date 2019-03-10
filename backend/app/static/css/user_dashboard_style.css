@@ -66,6 +66,8 @@ left: calc(50% - 50px);
   font-family: 'Lato';
   font-size: 15px;
   color: #2c3e50;
+  font-weight: 600;
+  text-align: center;
 }
 
 .inputfile-container {

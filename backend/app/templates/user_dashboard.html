@@ -3,6 +3,7 @@
     <title>User Dashboard</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,maximum-scale=1">
     <link rel="stylesheet" href="/static/css//user_dashboard_style.css">
+    <link href="https://fonts.googleapis.com/css?family=Karla|Lato|Roboto|Raleway|Source+Sans+Pro" rel="stylesheet">
 </head>
   <body>
     <div class="section-header">
@@ -30,7 +31,7 @@
             </form>
         {% else %}
             <h3 class="upload-msg">Upload your CV!</h3>
-            <div>Maximum file size: 8 Mb</div>
+            <div class="size-warning">Maximum file size: 8 Mb</div>
             <form method=post enctype=multipart/form-data>
                 <div class="inputfile-container">
                     <input type=file accept=".pdf" name=file id="file" class="inputfile">
