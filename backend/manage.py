@@ -7,7 +7,7 @@ import os, os.path
 def count_files():
     current_path = os.path.dirname(os.path.realpath(__file__))
     directory =  os.path.join(current_path, 'app', 'storage')
-    print('Number of files in storage: ' + len([name for name in os.listdir(directory) if os.path.isfile(os.path.join(directory, name))]))
+    print('Number of files in storage: ' + str(len([name for name in os.listdir(directory) if os.path.isfile(os.path.join(directory, name))])))
     exit()
 
 manager = Manager(app)
