@@ -19,7 +19,7 @@ class CompressFilesService(object):
         
         for root, dirs, files in contents:
             for file in files:
-                zip_file.write(os.path.join(root, file))
+                zip_file.write(os.path.join(root, file), os.path.basename(os.path.join(root, file)))
 
         test_zip = zip_file.testzip()
 
@@ -27,13 +27,9 @@ class CompressFilesService(object):
             logger.info('Zip file is corrupt!') 
             return None
 
-        size = sum([zinfo.file_size for zinfo in  zip_file.filelist])
-        zip_kb = float(size)/1000 #kB       
-        logger.info('Size of the zip: ' + str(zip_kb))
-
         logger.info("Zip file created!")
         zip_file.close()
-        
+
         memory_file.seek(0)
         return memory_file
         
