@@ -119,11 +119,31 @@
     .upload-msg {
       font-size: 24px;
     }
+
+    .company-logo {
+      margin-top: 10px;
+      max-height: 100px;
+      display: inline-block;
+    }  
+
+    .download-container {
+      margin-top: 100px;
+      text-align: center;
+    }
+
+    .dashboard-card {
+      height: 300px;
+    }
+
+    .logout-container {
+      margin-top: 100px;
+      text-align: center;
+    }
   }
   
   /* On screens that are 350px wide*/
   @media only screen and (max-width: 500px) {
     .dashboard-card {
-      width: 250px;
+      width: 80%;
     }
   }
