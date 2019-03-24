@@ -32,6 +32,8 @@ class CompressFilesService(object):
         logger.info('Size of the zip: ' + str(zip_kb))
 
         logger.info("Zip file created!")
+        zip_file.close()
+        
         memory_file.seek(0)
         return memory_file
         
