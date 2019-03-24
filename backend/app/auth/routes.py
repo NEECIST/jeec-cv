@@ -73,6 +73,9 @@ def login_company():
 
 @bp.route('/company-login', methods=['GET'])
 def get_company_login_form():
+    if current_user.is_authenticated:
+        return redirect(url_for('company_dashboard.dashboard'))
+        
     return render_template('company_login.html')
 
 @bp.route('/company-logout')
