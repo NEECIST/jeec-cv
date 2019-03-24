@@ -3,25 +3,27 @@
 <head>
     <title>User Dashboard</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,maximum-scale=1">
-    <link rel="stylesheet" href="/static/css//user_dashboard_style.css">
+    <link rel="stylesheet" href="/static/css//company_dashboard_style.css">
     <link href="https://fonts.googleapis.com/css?family=Karla|Lato|Roboto|Raleway|Source+Sans+Pro" rel="stylesheet">
 </head>
 
 <body>
     <div class="section-header">
-        <h2>Hello {{ name }}!</h2>
+        <h2>Welcome {{ name }}!</h2>
     </div>
 
-    <div class="resume-container">
-        <img class="resume-logo" src="{{ logo }}">
+    <div class="company-container">
+        <img class="company-logo" src="{{ logo }}">
     </div>
 
     <div class="dashboard-card">
-        <div class="text">The resumes will be deleted from our platform on May 1st.<p>Please download them all below.</p></div>
-        <form method=post>
-            <input type=submit name=submit value="Download Files" id="download-files" class="download-files">
-            <label for="download-files">Download Student CV's</label>
-        </form>
+        <div class="text">The resumes will be deleted from our platform on <b>May 1st</b>.<p>Please download them before this date.</p></div>
+        
+        <div class="download-container">
+            <form action="/company/dashboard/download" method=post>
+                <input type=submit name=submit value="Download Files" id="download-files" class="download-files">
+            </form>
+        </div>
     </div>
 
     <div class="logout-container">

@@ -17,21 +17,19 @@ def dashboard():
     logger.info('entered dashboard!')
     company_name = session['name']
     company_logo = '/static/partner-logos/' + company_name.lower() + '.png'
+
     return render_template('company_dashboard.html', name=company_name, logo=company_logo)
         
 # content routes
-@bp.route('/dashboard', methods=['POST'])
+@bp.route('/dashboard/download', methods=['GET', 'POST'])
 @login_required
-def dashboard_actions():
-    if request.form['submit'] == 'Download Files':
-        zip_file = FileHandler.get_files_zip()
+def download_files():
+    zip_file = FileHandler.get_files_zip()
         
-        if not zip_file:
-            return Response(response="Invalid zip file", status="400")
+    if not zip_file:
+        return Response(response="Invalid zip file", status="400")
 
-        return send_file(
-            zip_file,
-            as_attachment=True,
-            attachment_filename='curriculos_JEEC19.zip')
-
-    return redirect(url_for('company_dashboard.dashboard'))
+    return send_file(
+        zip_file,
+        as_attachment=True,
+        attachment_filename='curriculos_JEEC19.zip')
