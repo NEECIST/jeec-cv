@@ -16,7 +16,10 @@ def choose_role():
     if request.form['submit'] == 'Fenix Authentication':
         return redirect(url_for('auth.login'))
     
-    return redirect(url_for('/'))
+    elif request.form['submit'] == 'Company Authentication':
+        return redirect(url_for('auth.get_company_login_form'))
+    
+    return redirect(url_for('landing_page.index'))
 
 
  

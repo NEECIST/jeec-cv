@@ -2,21 +2,27 @@ from app.database import db
 from app.database.model import ModelMixin
 import sqlalchemy
 import uuid
+from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import UserMixin
 
 
-class Company(ModelMixin, db.Model):
+class Company(ModelMixin, db.Model, UserMixin):
     __tablename__ = 'company'
     
     name = db.Column(db.String(100))
-    email = db.Column(db.String(100))
+    username = db.Column(db.String(100))
 
-    password = db.Column(db.String(100))
-
-    remember_token = db.Column(db.String(100))
+    password_hash = db.Column(db.String(128))
     
-    def __init__(self, name, email):
+    def __init__(self, name, username):
         self.name = name
-        self.email = email
+        self.username = username
 
     def __repr__(self):
-        return '<email:: {}  |  Name: {}>'.format(self.email, self.name)
+        return '<Username: {}  |  Name: {}>'.format(self.username, self.name)
+
+    def set_password(self, password):
+        self.password_hash = generate_password_hash(password)
+
+    def check_password(self, password):
+        return check_password_hash(self.password_hash, password)

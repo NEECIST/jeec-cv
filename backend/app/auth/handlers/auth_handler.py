@@ -24,3 +24,12 @@ class AuthHandler(object):
             else:
                 session['first_time_login'] = False
             return True
+
+    # @staticmethod
+    # def check_for_company():
+    #     company = CompanyFinder.get_from_username(session['company_username'])
+
+    #     if company is None:
+    #         logger.info("New company added to the platform.")
+    #         try:
+    #             CreateCompanyService()

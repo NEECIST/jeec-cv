@@ -20,6 +20,9 @@ class ModelMixin(object):
     def reload(self):
         db.session.refresh(self)
 
+    def get_id(self):
+           return (self.uuid)
+
     def save(self):
         db.session.commit()
 

@@ -1,0 +1,34 @@
+<html>
+
+<head>
+    <title>User Dashboard</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,maximum-scale=1">
+    <link rel="stylesheet" href="/static/css//user_dashboard_style.css">
+    <link href="https://fonts.googleapis.com/css?family=Karla|Lato|Roboto|Raleway|Source+Sans+Pro" rel="stylesheet">
+</head>
+
+<body>
+    <div class="section-header">
+        <h2>Hello {{ name }}!</h2>
+    </div>
+
+    <div class="resume-container">
+        <img class="resume-logo" src="{{ logo }}">
+    </div>
+
+    <div class="dashboard-card">
+        <div class="text">The resumes will be deleted from our platform on May 1st.<p>Please download them all below.</p></div>
+        <form method=post>
+            <input type=submit name=submit value="Download Files" id="download-files" class="download-files">
+            <label for="download-files">Download Student CV's</label>
+        </form>
+    </div>
+
+    <div class="logout-container">
+        <form action="/auth/company-logout" method=get>
+            <input type="submit" name=submit value="Logout" class="logout-button">
+        </form>
+    </div>
+</body>
+
+</html>

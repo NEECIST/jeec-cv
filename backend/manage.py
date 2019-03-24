@@ -19,7 +19,6 @@ migrate = Migrate(app, db, directory=migrations_dir)
 
 manager.add_command('db', MigrateCommand)
 
-manager.add_command('cv_count', count_files())
 
 if __name__ == '__main__':
     manager.run()
