@@ -17,9 +17,7 @@
 
 #frontend
 .DS_Store
-/frontend/unbabel-news/node_modules/
 frontend/dist/
-/frontend/unbabel-news/src/components/icons
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
