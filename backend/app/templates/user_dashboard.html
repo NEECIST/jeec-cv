@@ -18,7 +18,7 @@
 
     <div class="dashboard-card">
         {% if has_uploaded == true %}
-            <h3 class="upload-msg">Your CV has been uploaded!</h3>
+            <h3 class="upload-msg">Your CV has been uploaded!<p>New submissions are now closed!</p></h3>
             <form method=post class="submited-file-form">
                 <div class="check-container">
                     <input type="submit" name=submit value="Check" id="check" class="check-button">
@@ -31,7 +31,7 @@
                 </div>
             </form>
         {% else %}
-            <h3 class="upload-msg">Upload your CV!</h3>
+            <!--<h3 class="upload-msg">Upload your CV!</h3>
             <div class="size-warning">Maximum file size: 8 Mb</div>
             <form method=post enctype=multipart/form-data>
                 <div class="inputfile-container">
@@ -43,7 +43,8 @@
                     <input type=submit name=submit value="Upload" id="submit" class="upload-button">
                     <label for="submit"><img class="upload-logo" src="/static/upload.svg">Upload</label>
                 </div>
-            </form>
+            </form>-->
+            <h3 class="upload-msg">Submissions are closed! :(</h3>
         {% endif %}
     </div>
 

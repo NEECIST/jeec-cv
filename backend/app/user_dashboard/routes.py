@@ -37,29 +37,29 @@ def dashboard_actions():
     elif request.form['submit'] == 'Delete':
         return redirect(url_for('user_dashboard.delete_file'))
     
-    elif request.form['submit'] == 'Upload':
-        if 'file' not in request.files:
-            logger.warning('Receiver upload request with no file part')
-            return redirect(request.url)
+    # elif request.form['submit'] == 'Upload':
+    #     if 'file' not in request.files:
+    #         logger.warning('Receiver upload request with no file part')
+    #         return redirect(request.url)
         
-        file = request.files['file']
+    #     file = request.files['file']
         
-        if file.filename == '':
-            logger.warning('User tried to upload empty file')
-            return redirect(request.url)
+    #     if file.filename == '':
+    #         logger.warning('User tried to upload empty file')
+    #         return redirect(request.url)
 
-        if file and allowed_file(file.filename):
-            filename = 'cv-' + session['username'] + '.pdf'
+    #     if file and allowed_file(file.filename):
+    #         filename = 'cv-' + session['username'] + '.pdf'
 
-            FileHandler.upload_file(file, filename)
-            logger.info('File uploaded sucessfuly!')
+    #         FileHandler.upload_file(file, filename)
+    #         logger.info('File uploaded sucessfuly!')
         
-        elif not allowed_file(file.filename):
-            logger.warning('Wrong file extension')
-            flash('Upload .pdf')
-            return redirect(request.url)
+    #     elif not allowed_file(file.filename):
+    #         logger.warning('Wrong file extension')
+    #         flash('Upload .pdf')
+    #         return redirect(request.url)
             
-        return redirect(url_for('user_dashboard.dashboard'))
+    #     return redirect(url_for('user_dashboard.dashboard'))
     
     elif request.form['submit'] == 'Accept Terms':
         from app.models.student import Student
