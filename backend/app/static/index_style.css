@@ -32,6 +32,7 @@
 .section-header {
     position: relative;
     padding-bottom: 10px;
+    margin-bottom: 20px;
   }
   
 .section-header h2 {
@@ -92,7 +93,6 @@ left: calc(50% - 50px);
     font-family: 'Lato',Helvetica,Arial,sans-serif;
     color: #f66161;
     font-weight: 600;
-    padding-top: 20px;
 }
 
 .login-button {
