@@ -92,7 +92,7 @@ left: calc(50% - 50px);
     font-family: 'Lato',Helvetica,Arial,sans-serif;
     color: #f66161;
     font-weight: 600;
-    margin-top: 20px;
+    padding-top: 20px;
 }
 
 .login-button {
