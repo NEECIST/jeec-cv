@@ -84,6 +84,17 @@ left: calc(50% - 50px);
     font-weight: 600;
 }
 
+.warning-text {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 22px;
+    text-align: center;
+    font-family: 'Lato',Helvetica,Arial,sans-serif;
+    color: #f66161;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
 .login-button {
     background-color: #ffffff;
     padding: 10px;
