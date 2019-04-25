@@ -11,9 +11,9 @@
 Welcome to the JEEC CV Platform! This service is open during the event so that students can submit their resume's to the companies that attended. 
 
 ## Tech Stack and key concepts
-    - Python
-    - Flask
-    - PostgreSQL
+*   - Python
+*   - Flask
+*   - PostgreSQL
 
 
 ## Instruction to deploy locally
